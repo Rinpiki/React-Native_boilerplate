@@ -1,15 +1,16 @@
+import React, { useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import MyContextApi from '../../../api/Api';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const contexto = useContext(MyContextApi);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>{contexto}</Text>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

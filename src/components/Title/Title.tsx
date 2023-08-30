@@ -5,9 +5,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const contexto = useContext(MyContextApi);
+
   return (
     <View style={styles.container}>
-      <Text>{contexto}</Text>
+      <Text>{contexto[0].photographer}</Text>
     </View>
   );
 }

@@ -1,22 +1,17 @@
 import React, { useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import MyContextApi from '../../../api/Api';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text } from 'react-native';
+import * as S from './Styles.title';
+import { View, Image, StyleSheet } from 'react-native';
 
 export default function App() {
-  const contexto = useContext(MyContextApi);
-
+  const context = useContext(MyContextApi);
   return (
-    <View style={styles.container}>
-      <Text>{contexto[0].photographer}</Text>
-    </View>
+    <S.Container>
+      <Text>{context?.photos?.[0]?.photographer || 'Aguardando dados...'}</Text>
+
+      <StatusBar />
+    </S.Container>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

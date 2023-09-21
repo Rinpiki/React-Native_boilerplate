@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { Image } from 'react-native';
 
 export const Container = styled.View`
   position: relative;
   width: 90%;
   margin-top: 10px;
+  border-radius: 8px;
 `;
 
 export const SearchInput = styled.TextInput`
@@ -19,9 +20,10 @@ export const SearchInput = styled.TextInput`
   color: #9f9f9f;
   padding: 8px;
 `;
-export const Icon = styled(FontAwesomeIcon)`
-  margin-left: 10px;
-  position: absolute;
-  right: 10px;
-  top: 12px;
+
+export const I = styled(Image)`
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 8px;
 `;

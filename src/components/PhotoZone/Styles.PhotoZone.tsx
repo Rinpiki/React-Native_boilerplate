@@ -6,6 +6,7 @@ export const Container = styled.View`
   width: 90%;
   margin-top: 10px;
   border-radius: 8px;
+  margin-bottom: 60px;
 `;
 
 export const SearchInput = styled.TextInput`

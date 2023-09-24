@@ -4,7 +4,8 @@ import axios from 'axios';
 const ApiContext = createContext(null);
 
 export function ApiProvider({ children }) {
-  const [Data, setData] = useState([]);
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState('car');
 
   useEffect(() => {
     const config = {
@@ -14,16 +15,16 @@ export function ApiProvider({ children }) {
     };
 
     axios
-      .get('https://api.pexels.com/v1/search?query=nature', config)
+      .get(`https://api.pexels.com/v1/search?query=${query}&locale=pt-BR`, config)
       .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [query]);
 
-  return <ApiContext.Provider value={Data}>{children}</ApiContext.Provider>;
+  return <ApiContext.Provider value={{ data, query, setQuery }}>{children}</ApiContext.Provider>;
 }
 
 export default ApiContext;

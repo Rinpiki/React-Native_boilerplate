@@ -10,9 +10,8 @@ export default function App() {
   return (
     <ApiProvider>
       <View style={styles.container}>
-        <Search />
-
         <StatusBar style="auto" />
+        <Search />
         <PhotoZone />
       </View>
     </ApiProvider>
@@ -24,8 +23,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: 'black',
     marginTop: 40,
   },
 });

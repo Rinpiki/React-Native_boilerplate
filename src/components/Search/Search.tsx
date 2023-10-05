@@ -4,10 +4,9 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import * as S from './Styles.Search';
 
 export default function App() {
-  const [value, onChangeText] = useState('Funciona');
-  const [inputText, setInputText] = useState('');
+  const [value, onChangeText] = useState('');
   const contexto = useContext(MyContextApi);
-  const { data, query, setQuery } = contexto;
+  const { setQuery } = contexto;
 
   const handleOnSubmit = () => {
     // Faça algo com o texto (inputText) aqui, por exemplo, envie para uma API
@@ -19,11 +18,11 @@ export default function App() {
     <S.Container>
       <S.SearchInput
         editable
-        multiline
-        numberOfLines={4}
+        numberOfLines={1}
         maxLength={40}
         placeholder="Digite algo..."
         onChangeText={(text) => onChangeText(text)}
+        onSubmitEditing={handleOnSubmit}
         value={value}
       />
 

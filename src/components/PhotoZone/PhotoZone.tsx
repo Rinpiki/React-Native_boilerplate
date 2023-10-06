@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import * as FileSystem from 'expo-file-system';
-import * as Permissions from 'expo-permissions';
 const { StorageAccessFramework } = FileSystem;
-import { shareAsync } from 'expo-sharing';
 import MyContextApi from '../../../api/Api';
-import { Text, View, Image, ScrollView, TouchableOpacity, Platform } from 'react-native'; // Importe o TouchableOpacity
+import { Text, View, Image, ScrollView, TouchableOpacity, Platform } from 'react-native';
 import * as S from './Styles.PhotoZone';
 
 export default function App() {
@@ -28,7 +26,7 @@ export default function App() {
       const dir = ensureDirAsync(downloadPath);
     }
 
-    let fileName = fileUrl.split('Reports/')[1];
+    let fileName = filename;
     //alert(fileName)
     const downloadResumable = FileSystem.createDownloadResumable(
       fileUrl,
@@ -45,7 +43,8 @@ export default function App() {
     }
   };
 
-  const saveAndroidFile = async (url, fileName = 'File') => {
+  const saveAndroidFile = async (url, fileName) => {
+    console.log(fileName);
     try {
       const fileString = await FileSystem.readAsStringAsync(url, {
         encoding: FileSystem.EncodingType.Base64,
@@ -60,13 +59,13 @@ export default function App() {
         await StorageAccessFramework.createFileAsync(
           permissions.directoryUri,
           fileName,
-          'image/png'
+          'image/jpeg'
         )
           .then(async (uri) => {
             await FileSystem.writeAsStringAsync(uri, fileString, {
               encoding: FileSystem.EncodingType.Base64,
             });
-            alert('Report Downloaded Successfully');
+            alert('Imagem Salva');
           })
           .catch((e) => {});
       } catch (e) {
@@ -82,7 +81,7 @@ export default function App() {
           {name?.map((name) => {
             return (
               <TouchableOpacity
-                onPress={() => downloadFile(name?.src?.large, name?.src?.photographer)}
+                onPress={() => downloadFile(name?.src?.original, name?.alt)}
                 key={name.id}
               >
                 <S.I

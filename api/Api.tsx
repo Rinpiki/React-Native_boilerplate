@@ -15,7 +15,7 @@ export function ApiProvider({ children }) {
     };
 
     axios
-      .get(`https://api.pexels.com/v1/search?query=${query}&locale=pt-BR`, config)
+      .get(`https://api.pexels.com/v1/search?query=${query}&page=2&locale=pt-BR`, config)
       .then((response) => {
         setData(response.data);
       })
